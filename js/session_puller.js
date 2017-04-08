@@ -12,6 +12,7 @@ module.exports = SessionPuller = (function() {
     this.index_prefix = index_prefix;
     this.start = start;
     this.end = end;
+    this.format = "epoch_millis";
     this._body = {
       query: {
         filtered: {
@@ -30,7 +31,8 @@ module.exports = SessionPuller = (function() {
                 range: {
                   time: {
                     gte: this.start,
-                    lt: this.end
+                    lt: this.end,
+                    format: this.format
                   }
                 }
               }
